@@ -3,12 +3,22 @@ env:
   owner: mazmat-uts
   repo: my-first-repo
 on:
-  repository_dispatch:
-    types: [do-something]
+  #repository_dispatch:
+  #  types: [do-something]
+  workflow_dispatch:
+   inputs:
+    name:
+      description: 'Person to greet'
+      required: true
+      default: 'Azmat'
+    home:
+     description: 'location'
+     required: false
+     default: 'Melbourne'
 jobs:
-  build:
-    name: Run Some Thing
+  say_hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Do Something
-        run: echo Doing Something...
+    - run: |
+        echo "Hello $!"
+        echo "- in $!"
