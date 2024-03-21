@@ -1,24 +1,21 @@
 name: Trigger Workflow
-env:
-  owner: mazmat-uts
-  repo: my-first-repo
 on:
   #repository_dispatch:
   #  types: [do-something]
   workflow_dispatch:
    inputs:
-    name:
-      description: 'Person to greet'
-      required: true
-      default: 'Azmat'
-    home:
-     description: 'location'
-     required: false
-     default: 'Melbourne'
+     componentid:
+       description: 'Component ID'
+       required: true
+       default: ''
+     version:
+       description: 'version'
+       required: false
+       default: '0.00'
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Hello $!"
-        echo "- in $!"
+        echo ${{ inputs.componentid}}
+        echo ${{ inputs.version}
