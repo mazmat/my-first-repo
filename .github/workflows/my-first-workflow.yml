@@ -9,7 +9,7 @@ on:
        required: true
        default: ''
      version:
-       description: 'version'
+       description: 'Version'
        required: false
        default: '0.00'
 jobs:
