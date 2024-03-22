@@ -13,9 +13,11 @@ on:
        required: false
        default: '0.00'
 jobs:
-  say_hello:
+  preReq:
     runs-on: ubuntu-latest
     steps:
     - run: |
         echo ${{ inputs.componentid}}
         echo ${{ inputs.version}}
+ 
+  
