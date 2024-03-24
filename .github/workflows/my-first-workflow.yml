@@ -32,7 +32,7 @@ jobs:
         uses: tj-actions/changed-files@v37.5.2
 
       # Runs a set of commands using the runners shell
-      - name: Create Package
+      - name: Create Packaged Component
         id: createPackage
         run: | 
            compId=${{ inputs.componentid}}
@@ -51,7 +51,7 @@ jobs:
     environment:
       name: "SIT"
     steps:
-      - name: Deploy to SIT
+      - name: Deploy to SIT Environment
         id: deploytoSIT
         run: | 
            compId=${{ inputs.componentid}}
@@ -70,8 +70,8 @@ jobs:
     environment:
       name: "UAT"
     steps:
-      - name: Deploy to SIT
-        id: deploytoSIT
+      - name: Deploy to UAT Environment
+        id: deploytoUAT
         run: | 
            compId=${{ inputs.componentid}}
            compCount=1
@@ -89,8 +89,8 @@ jobs:
     environment:
       name: "PRD"
     steps:
-      - name: Deploy to SIT
-        id: deploytoSIT
+      - name: Deploy to PRD Environment
+        id: deploytoPRD
         run: | 
            compId=${{ inputs.componentid}}
            compCount=1
