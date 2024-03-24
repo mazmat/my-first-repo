@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${{ inputs.componentid}}
-        echo ${{ inputs.version}}
+        echo Componet ID: ${{ inputs.componentid}}
+        echo Version: ${{ inputs.version}}
  
   
