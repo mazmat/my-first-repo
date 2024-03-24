@@ -19,9 +19,14 @@ jobs:
     - run: |
         echo Componet ID: ${{ inputs.componentid}}
         echo Version: ${{ inputs.version}}
- 
+
+        compId=${{ inputs.componentid}}
+        compCount=1
+        compCount=$(echo "$compId" | awk -F "," '{print NF-1}')
+        compCount=$((compCount + 1))
+        echo Number of Components: $compCount
+        
   createPackage:
-  
     runs-on: [ubuntu-latest]
     needs: preReqs
     steps:
@@ -37,14 +42,20 @@ jobs:
         id: createPackage
         run: | 
 
-          compId=${{ inputs.componentid}}
-          compCount=1
-          compCount=$(echo "$compId" | awk -F "," '{print NF-1}')
-          compCount=$((compCount + 1))
-          echo Number of Components: $compCount
-
           for (( _compIdx=1 ; _compIdx <= $compCount ; _compIdx++ )) ; do
               _compId=$(echo $compId | cut -f $_compIdx -d",")
               echo Create Packaged Component for Id: $_compId
           done
           
+  deploytoSIT:
+    runs-on: [ubuntu-latest]
+    needs: createPackage
+    steps:
+      - name: Deploy to SIT
+        id: deploytoSIT
+        run: | 
+
+          for (( _compIdx=1 ; _compIdx <= $compCount ; _compIdx++ )) ; do
+              _compId=$(echo $compId | cut -f $_compIdx -d",")
+              echo Create Packaged Component for Id: $_compId
+          done
