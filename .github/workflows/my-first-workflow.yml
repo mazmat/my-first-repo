@@ -45,6 +45,6 @@ jobs:
 
           for (( _compIdx=1 ; _compIdx <= $compCount ; _compIdx++ )) ; do
               _compId=$(echo $compId | cut -f $_compIdx -d",")
-              echo Create Packaged Component for Id: _compId
+              echo Create Packaged Component for Id: $_compId
           done
           
