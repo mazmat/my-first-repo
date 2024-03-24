@@ -42,4 +42,9 @@ jobs:
           compCount=$(echo "$compId" | awk -F "," '{print NF-1}')
           compCount=$((compCount + 1))
           echo Number of Components: $compCount
+
+          for (( _compIdx=1 ; _compIdx <= $compCount ; _compIdx++ )) ; do
+              _compId=$(echo $compId | cut -f $_compIdx -d",")
+              echo Create Packaged Component for Id: _compId
+          done
           
