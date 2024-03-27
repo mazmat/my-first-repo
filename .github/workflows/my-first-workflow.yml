@@ -1,17 +1,20 @@
 name: Packaged Component and Deployment
 on:
-  #repository_dispatch:
-  #  types: [do-something]
-  workflow_dispatch:
-   inputs:
-     componentid:
-       description: 'Component ID'
-       required: true
-       default: ''
-     version:
-       description: 'Version'
-       required: false
-       default: '0.00'
+  schedule:
+   - cron: '5 * * * *'
+  #workflow_dispatch:
+   #inputs:
+     #componentid:
+       #description: 'Component ID'
+       #required: true
+       #default: ''
+     #version:
+       #description: 'Version'
+       #required: false
+       #default: '0.00'
+       
+
+     
 jobs:
   preReqs:
     runs-on: ubuntu-latest
